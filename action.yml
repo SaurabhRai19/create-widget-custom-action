@@ -1,0 +1,23 @@
+name: 'Azure Activity Custom Action'
+description: 'Email validator'
+inputs:
+  organization:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'saurabh@gmail.com'
+  processId: #name of the azure devops project
+    description: 'Name of the ADO Project in the Organization'
+    required: true
+    default: 'DemoProject'
+  api-version: 
+    description: 'File that can be processed'
+  AzureAccessToken:
+    description: 'ADO Token'
+    required: true
+    
+outputs:
+  message: # id of output
+    description: 'if email valid or not'
+runs:
+  using: 'node16'
+  main: 'index.js'
