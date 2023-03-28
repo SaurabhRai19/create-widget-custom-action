@@ -8,7 +8,7 @@ try {
   //getting and using important credentials
   const accessToken = core.getInput('AzureAccessToken');
   core.setSecret('accessToken');
-  let organization = "DevOps-MBU";
+  let organization = core.getInput('organization');
   const project = core.getInput('organization');
   //getting and using a file input
   const processId= core.getInput('processId');
@@ -34,9 +34,9 @@ try {
   };
   let url = `https://dev.azure.com/${organization}/_apis/work/processes/${processId}/workitemtypes?api-version=7.1-preview.2`
   const request = await axios({
+    method: 'POST',
     url,
     data: bodydata,
-    method: 'POST',
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
